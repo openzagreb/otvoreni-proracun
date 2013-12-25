@@ -77,9 +77,9 @@ var BudgetHelpers = {
     var breakdownLink;
     
     if (type == 'fund')
-      breakdownLink = BudgetHelpers.getAddressLink(BudgetLib.loadYear, BudgetHelpers.convertToQueryString(itemId), "", "Breakdown by department&nbsp;&raquo;");
+      breakdownLink = BudgetHelpers.getAddressLink(BudgetLib.loadYear, BudgetHelpers.convertToQueryString(itemId), "", "Ras&#269;lanjenje po odsjeku&nbsp;&raquo;");
     else
-      breakdownLink = BudgetHelpers.getAddressLink(BudgetLib.loadYear, "", BudgetHelpers.convertToQueryString(itemId), "Breakdown by department&nbsp;&raquo;");
+      breakdownLink = BudgetHelpers.getAddressLink(BudgetLib.loadYear, "", BudgetHelpers.convertToQueryString(itemId), "Ras&#269;lanjenje po odsjeku&nbsp;&raquo;");
       
     return "\
       <tr class='expanded-content' id='" + itemId + "-expanded'>\
@@ -104,10 +104,10 @@ var BudgetHelpers = {
   
   generateExpandedDeptRow: function(departmentId, department, description, linkToWebsite, departmentFund, controlOfficer) {
     if (linkToWebsite != '')
-      linkToWebsite = "<a href='" + linkToWebsite + "'>Official&nbsp;website&nbsp;&raquo;</a>";
+      linkToWebsite = "<a href='" + linkToWebsite + "'>Slu&#382;bena&nbsp;web&nbsp;stranica&nbsp;&raquo;</a>";
       
     if (controlOfficer != '')
-      controlOfficer = "<br/>Control officer: " + BudgetHelpers.getAddressLink(BudgetLib.loadYear, "", BudgetHelpers.convertToQueryString(controlOfficer), controlOfficer + " &raquo;");
+      controlOfficer = "<br/>Nadle&#382;ni ured: " + BudgetHelpers.getAddressLink(BudgetLib.loadYear, "", BudgetHelpers.convertToQueryString(controlOfficer), controlOfficer + " &raquo;");
     
     return "\
       <tr class='expanded-content' id='department-" + departmentId + "-expanded'>\
@@ -116,7 +116,7 @@ var BudgetHelpers = {
             <h2>" + department + "</h2>\
             <p>" + description + " " + linkToWebsite + "</p>\
             <p>\
-              Fund: " + BudgetHelpers.getAddressLink(BudgetLib.loadYear, BudgetHelpers.convertToQueryString(departmentFund), "", departmentFund + " &raquo;") + "</a>\
+              Fond: " + BudgetHelpers.getAddressLink(BudgetLib.loadYear, BudgetHelpers.convertToQueryString(departmentFund), "", departmentFund + " &raquo;") + "</a>\
               " + controlOfficer + "\
             </p>\
           </div>\
