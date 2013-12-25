@@ -32,7 +32,8 @@ var BudgetLib = {
   FUND_DESCRIPTION_TABLE_ID: "1DVnzs1tOFrVxrf6_jRFeXUe7b6lDYd5jh309Up4",
   OFFICER_DESCRIPTION_TABLE_ID: "1uSDhUpVbk3c7m0E7iT87LP8GfPk6vnczh-y64sI",
   
-  title: "Cook County Budget",
+ 
+  title: "Prora&#269;un Grada Zagreba",
   startYear: 1993,
   endYear: 2012,
   loadYear: 2012, //viewing year
@@ -70,7 +71,7 @@ var BudgetLib = {
       }
       
       BudgetQueries.getDepartments(BudgetLib.fundView, 'Fund', BudgetLib.loadYear, "BudgetLib.getDataAsBudgetTable");
-      BudgetLib.updateHeader(BudgetLib.fundView, 'Department');
+      BudgetLib.updateHeader(BudgetLib.fundView, 'Odsjek');
       BudgetQueries.getTotalsForYear(BudgetLib.fundView, 'Fund', BudgetLib.loadYear, "BudgetLib.updateScorecard");
       BudgetQueries.getFundDescription(BudgetLib.fundView, "BudgetLib.updateScorecardDescription");
     } 
@@ -82,7 +83,7 @@ var BudgetLib = {
       }
       
       BudgetQueries.getDepartments(BudgetLib.officerView, 'Control Officer', BudgetLib.loadYear, "BudgetLib.getDataAsBudgetTable");
-      BudgetLib.updateHeader(BudgetLib.officerView, 'Department');
+      BudgetLib.updateHeader(BudgetLib.officerView, 'Odsjek');
       BudgetQueries.getTotalsForYear(BudgetLib.officerView, 'Control Officer', BudgetLib.loadYear, "BudgetLib.updateScorecard");
       BudgetQueries.getControlOfficerDescription(BudgetLib.officerView, "BudgetLib.updateScorecardDescription");
     }
@@ -96,8 +97,8 @@ var BudgetLib = {
         BudgetQueries.getAllControlOfficersForYear(BudgetLib.loadYear, "BudgetLib.getDataAsBudgetTable");
         $("#breakdown-nav").html("\
           <ul>\
-            <li><a href='#' rel='address:/?year=" + BudgetLib.loadYear + "&viewMode=fund'>Where's it going?</a></li>\
-            <li class='current'>Who controls it?</li>\
+            <li><a href='#' rel='address:/?year=" + BudgetLib.loadYear + "&viewMode=fund'>Kamo novac ide?</a></li>\
+            <li class='current'>Tko to kontrolira?</li>\
           </ul>\
           <div class='clear'></div>");
         $('#breakdown-item-title span').html('Control Officer');
@@ -106,15 +107,15 @@ var BudgetLib = {
         BudgetQueries.getAllFundsForYear(BudgetLib.loadYear, "BudgetLib.getDataAsBudgetTable");
         $("#breakdown-nav").html("\
           <ul>\
-            <li class='current'>Where's it going?</li>\
-            <li><a href='#' rel='address:/?year=" + BudgetLib.loadYear + "&viewMode=officer'>Who controls it?</a></li>\
+            <li class='current'>Kamo novac ide?</li>\
+            <li><a href='#' rel='address:/?year=" + BudgetLib.loadYear + "&viewMode=officer'>Tko to kontrolira?</a></li>\
           </ul>\
         <div class='clear'></div>");
         $('#breakdown-item-title span').html('Fund');
       }
       $('#breakdown-nav a').address();
       
-      BudgetLib.updateHeader(BudgetLib.title, 'Fund');
+      BudgetLib.updateHeader(BudgetLib.title, 'Fond');
       BudgetQueries.getTotalsForYear('', '', BudgetLib.loadYear, "BudgetLib.updateScorecard");
       BudgetQueries.getFundDescription(BudgetLib.fundView, "BudgetLib.updateScorecardDescription");
     }
@@ -124,7 +125,7 @@ var BudgetLib = {
   updateHeader: function(view, subtype){
     $('h1').html(view);
     if (view != BudgetLib.title) {
-      $('#breadcrumbs').html("<a href='/?year=" + BudgetLib.loadYear + "' rel='address:/?year=" + BudgetLib.loadYear + "'>&laquo back to " + BudgetLib.title + "</a>");
+      $('#breadcrumbs').html("<a href='/?year=" + BudgetLib.loadYear + "' rel='address:/?year=" + BudgetLib.loadYear + "'>&laquo natrag na " + BudgetLib.title + "</a>");
       $("#breakdown-nav").html("");
     }
     else
@@ -278,7 +279,7 @@ var BudgetLib = {
           var budgetedPercent = (((budgetedTop / budgetedBottom) - 1) * 100).toFixed(1);
           if (budgetedPercent > -0.05) budgetedPercent = '+' + budgetedPercent;
           
-          $('#budgeted-percent').hide().html('<strong>' + budgetedPercent + '%</strong> budgeted from ' + (BudgetLib.loadYear - 1)).fadeIn();
+          $('#budgeted-percent').hide().html('<strong>' + budgetedPercent + '%</strong> prora&#269;una iz ' + (BudgetLib.loadYear - 1)).fadeIn();
         }
         else $('#budgeted-percent').fadeOut();
         
@@ -286,7 +287,7 @@ var BudgetLib = {
           var spentPercent = (((spentTop / spentBottom) - 1) * 100).toFixed(1);
           if (spentPercent > -0.05) spentPercent = '+' + spentPercent;
           
-          $('#spent-percent').hide().html('<strong>' + spentPercent + '%</strong> spent from ' + (BudgetLib.loadYear - 1)).fadeIn();
+          $('#spent-percent').hide().html('<strong>' + spentPercent + '%</strong> potro&scaron;enog iz ' + (BudgetLib.loadYear - 1)).fadeIn();
         }
         else $('#spent-percent').fadeOut();
       }
@@ -398,14 +399,14 @@ var BudgetLib = {
       if (budgetedTop > 0 && budgetedBottom > 0) {
         var budgetedPercent = (((budgetedTop / budgetedBottom) - 1) * 100).toFixed(1);
         if (budgetedPercent >= -0.05) budgetedPercent = '+' + budgetedPercent;
-        $('#sparkline-budgeted').hide().html('<strong>' + budgetedPercent + '%</strong> budgeted from ' + (BudgetLib.loadYear - 1)).fadeIn();
+        $('#sparkline-budgeted').hide().html('<strong>' + budgetedPercent + '%</strong> prora&#269;una iz ' + (BudgetLib.loadYear - 1)).fadeIn();
       }
       else $('#sparkline-budgeted').fadeOut();
       
       if (spentTop > 0 && spentBottom > 0) {
         var spentPercent = (((spentTop / spentBottom) - 1) * 100).toFixed(1);
         if (spentPercent >= -0.05) spentPercent = '+' + spentPercent;
-        $('#sparkline-spent').hide().html('<strong>' + spentPercent + '%</strong> spent from ' + (BudgetLib.loadYear - 1)).fadeIn();
+        $('#sparkline-spent').hide().html('<strong>' + spentPercent + '%</strong> potro&scaron;enog iz ' + (BudgetLib.loadYear - 1)).fadeIn();
       }
       else $('#sparkline-spent').fadeOut();
     }
