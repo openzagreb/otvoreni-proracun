@@ -4,11 +4,11 @@ var BudgetHighcharts = {
   pointInterval: 365 * 24 * 3600 * 1000, //one year in ms
   apropColor:   '#264870',
   apropSymbol:  'circle',
-  apropTitle:   'Budgeted',
+  apropTitle:   'Planirano',
   
   expendColor:  '#7d9abb',
   expendSybmol: 'square',
-  expendTitle:  'Spent',
+  expendTitle:  'Izvršeno',
   
   //displays main graph using highcharts (http://www.highcharts.com)
   updateMainChart: function() {
@@ -106,7 +106,7 @@ var BudgetHighcharts = {
         formatter: function() {
           var s = "<strong>" + Highcharts.dateFormat("%Y", this.x) + "</strong>";
           $.each(this.points, function(i, point) {
-            s += "<br /><span style=\"color: " + point.series.color + "\">" + point.series.name + ":</span> $" + Highcharts.numberFormat(point.y, 0);
+            s += "<br /><span style=\"color: " + point.series.color + "\">" + point.series.name + ":</span>" + Highcharts.numberFormat(point.y, 0) + " kn";
           });
           return s;
         },
@@ -201,7 +201,7 @@ var BudgetHighcharts = {
           formatter: function() {
             var s = "<strong>" + Highcharts.dateFormat("%Y", this.x) + "</strong>";
             $.each(this.points, function(i, point) {
-              s += "<br /><span style=\"color: " + point.series.color + "\">" + point.series.name + ":</span> $" + Highcharts.numberFormat(point.y, 0);
+              s += "<br /><span style=\"color: " + point.series.color + "\">" + point.series.name + ":</span>" + Highcharts.numberFormat(point.y, 0) + " kn";
             });
             return s;
           },
@@ -232,10 +232,10 @@ var BudgetHighcharts = {
   
   formatAmount: function(value) {
     if (value >= 1000000000)
-      return "$" + value / 1000000000 + "B";
+      return "kn" + value / 1000000000 + " mlrd";
     else if (value >= 1000000)
-      return "$" + value / 1000000 + "M";
+      return "kn" + value / 1000000 + " mil";
     else
-      return "$" + value;
+      return "kn" + value;
   }
 }
