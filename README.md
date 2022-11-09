@@ -1,3 +1,6 @@
+**Depricated**
+- dependency on Google Fusion Tables v1 API which has been [shutdown in 2019](https://workspaceupdates.googleblog.com/2018/12/google-fusion-tables-to-be-shut-down-on.html)
+
 [Look at Cook](http://lookatcook.com)
 =====================================
 
